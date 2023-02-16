@@ -33,6 +33,14 @@ Given("a fibonacci sequence that is initialized to {float}", function(float) {
         }
     });
 
+Given("a fibonacci sequence that has been initialized to {string}", function(value) {
+    try {
+        this.fibonacci.init(value);
+    } catch {
+        this.itThrew();
+    }
+});
+
 When("the fibonacci sequence is then initialized to {int}", function(value) {
     this.fibonacci.init(value);
 });
@@ -61,4 +69,6 @@ Then("it should throw an exception", function() {
     assert(this.hasThrown());
 });
 
-
+Then("the current number should be {int}", function(value) {
+    assert(this.fibonacci.current(value));
+});
